@@ -17,6 +17,13 @@ document.querySelectorAll(".nav-links a").forEach((link) => {
 
 document.querySelectorAll(".dropdown").forEach((dropdown) => {
     dropdown.querySelector("button").addEventListener("click", () => {
+    closeAllDropdown();
     dropdown.classList.toggle("open");
   });
 });
+
+function closeAllDropdown(){
+    document.querySelectorAll(".dropdown").forEach((dropdown)=>{
+        dropdown.classList.remove("open")
+    })
+}
