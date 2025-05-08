@@ -1,61 +1,94 @@
-* {
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
-nav ul {
+html{
+    scroll-behavior: smooth;
+}
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+header{
+    background-color: rgb(219, 219, 219);
+    position: sticky;
+    top: 0;
+    padding: 0.5em;
+}
+.nav-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav-links, .dropdown-list{
+    list-style:none;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1em;
-
-    justify-content: space-evenly;
-    list-style: none;
-    background-color: rgb(183, 183, 183);
+    text-align: center;
+    background-color: rgb(219, 219, 219);
+    width: 100%;
 }
-
-nav ul li {
-    margin: 0.2em;
-    position: relative;
+.dropdown-list{
+    background-color: white;
+    width: 100px;
+    margin-top: 0.3rem;
 }
-
-nav a, .dropdown-toggle {
-    color: black;
-    text-decoration: none;
-    background: none;
-    border: none;
-    font: inherit;
-    cursor: pointer;
+.nav-links{
+    position: absolute;
+    top:100%;
+    left: 0;
+        /*hiding navlinks on mobile*/
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.5s ease-in-out;
 }
-
-.dropdown-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5em;
-    background-color: rgb(237, 237, 237);
-    overflow: hidden;
+.dropdown-list{
     max-height: 0;
-    transition: max-height 0.5s ease-in-out;
+    overflow: hidden;
 }
-
-.dropdown:hover .dropdown-list {
+.nav-links.show{
     max-height: 500px;
 }
-
-.dropdown.active .dropdown-list {
-    max-height: 500px; /* allow JS toggle */
+.nav-links li{
+    margin:0.5em;
 }
-
-@media (min-width: 800px) {
-    nav ul {
-        flex-direction: row;
+.nav-links a, .dropdown button{
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    font:inherit;
+    background: none;
+    border:none;
+    cursor: pointer;
+}
+.nav-links a:hover{
+    color:rgb(88, 88, 88);
+}
+.dropdown:hover .dropdown-list{
+    max-height: 500px;
+}
+section{
+  padding: 1em;
+  scroll-margin-top: 3em;
+}
+section h1{
+    margin-bottom: 0.5em;
+}
+section p{
+    margin-top: 1em;
+}
+@media (min-width:800px) {
+    .menu{
+        display: none;
     }
-
-    .dropdown-list {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100px;
+    .nav-links{
+        max-height: none;
+        flex-direction: row;
+        position: static;
+    }
+    header{
+        display: flex;
+        justify-content: space-between;
     }
 }

@@ -1,28 +1,16 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const dropdowns = document.querySelectorAll('.dropdown');
+const menu = document.querySelector('.menu');
+const navLinks = document.querySelector('.nav-links');
 
-    // Check if device has no hover (touch device)
-    if (window.matchMedia('(hover: none)').matches) {
-        dropdowns.forEach(dropdown => {
-            const toggle = dropdown.querySelector('.dropdown-toggle');
+menu.addEventListener('click', ()=>{
+    navLinks.classList.toggle('show');
+})
 
-            toggle.addEventListener('click', function(e) {
-                e.stopPropagation();
-                const isActive = dropdown.classList.contains('active');
+window.addEventListener('scroll', ()=>{
+    navLinks.classList.remove('show');
+})
 
-                // Close all dropdowns
-                dropdowns.forEach(d => d.classList.remove('active'));
-
-                // Toggle current if it wasn't already active
-                if (!isActive) {
-                    dropdown.classList.add('active');
-                }
-            });
-        });
-
-        // Close dropdowns when clicking outside
-        document.addEventListener('click', function() {
-            dropdowns.forEach(d => d.classList.remove('active'));
-        });
-    }
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.classList.remove('show');
+    });
 });
