@@ -50,7 +50,7 @@ header{
 .nav-links.show{
     max-height: 500px;
 }
-.nav-links li{
+.nav-links li, .dropdown{
     margin:0.5em;
 }
 .nav-links a, .dropdown button{
@@ -65,9 +65,11 @@ header{
 .nav-links a:hover{
     color:rgb(88, 88, 88);
 }
-.dropdown:hover .dropdown-list{
+.dropdown.open .dropdown-list {
+    transition: max-height 0.5s ease-in-out;
     max-height: 500px;
 }
+
 section{
   padding: 1em;
   scroll-margin-top: 3em;
@@ -78,6 +80,7 @@ section h1{
 section p{
     margin-top: 1em;
 }
+
 @media (min-width:800px) {
     .menu{
         display: none;
@@ -85,10 +88,18 @@ section p{
     .nav-links{
         max-height: none;
         flex-direction: row;
+        align-items: center;
         position: static;
+    }
+    .dropdown-list{
+        position: absolute;
     }
     header{
         display: flex;
         justify-content: space-between;
+    }
+    .dropdown:hover .dropdown-list{
+        transition: max-height 0.5s ease-in-out;
+        max-height: 500px;
     }
 }
